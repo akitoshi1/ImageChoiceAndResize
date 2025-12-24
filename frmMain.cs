@@ -448,7 +448,7 @@ namespace ImageChoiceAndResize
         /// <returns></returns>
         public bool ChengeDir(bool isGetImageSize)
         {
-            string[] imageExtensionArray = new string[] { ".BMP", ".JPG", ".JPEG", ".PNG" };
+            string[] imageExtensionArray = new string[] { ".BMP", ".JPG", ".JPEG", ".PNG",".GIF",".TIFF",".TIF",".ICO",".WMF",".EMF" };
             bool isImageFile = false;
             int i = 0;
 
@@ -583,38 +583,55 @@ namespace ImageChoiceAndResize
         /// </summary>
         public void SetImage(ImageFile ifile)
         {
-            // リソース解放
-            if (this.pictureBox.Image != null)
+            bool isRemove = false;
+            try
             {
-                this.pictureBox.Image.Dispose();
-                this.pictureBox.Image = null;
-            }
-
-            // リソース再設定
-            if (File.Exists(ifile.fullName))
-            {
-                using (var image = Image.FromFile(ifile.fullName))
+                // リソース解放
+                if (this.pictureBox.Image != null)
                 {
-
-                    this.pictureBox.Image = new Bitmap(image);
+                    this.pictureBox.Image.Dispose();
+                    this.pictureBox.Image = null;
                 }
+
+                // リソース再設定
+                if (File.Exists(ifile.fullName))
+                {
+                    using (var image = Image.FromFile(ifile.fullName))
+                    {
+
+                        this.pictureBox.Image = new Bitmap(image);
+                    }
+                }
+                else
+                {
+                    // リムーブ済
+                    isRemove = true;
+                }
+
+                // 内部パラメータ値の設定
+                this.lblFileIndex.Text = ifile.index.ToString();
+                this.lblFileName.Text = "Name:" + ifile.name;
+                this.lblImageWidth.Text = "Width:" + ifile.intWidth.ToString();
+                this.lblImageHeight.Text = "Height:" + ifile.intHeight.ToString();
+
+                if (isRemove)
+                {
+                    // 表示情報
+                    this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[🗑️ REMOVED 🗑️]";
+
+                }
+                else
+                {
+                    // 表示情報
+                    //this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[" + this.lblFileName.Text + "]_[" + this.lblImageWidth.Text + "]_[" + this.lblImageHeight.Text + "]";
+                    this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[" + this.lblFileName.Text + "]";
+                }
+                this.lblShowInfo2.Text = "[" + this.lblFileIndex.Text + "/" + this.ImageFilesCount() + "] " + this.RemoveFileCount();
             }
-            else
+            catch (Exception err)
             {
-
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // 内部パラメータ値の設定
-            this.lblFileIndex.Text = ifile.index.ToString();
-            this.lblFileName.Text = "Name:" + ifile.name;
-            this.lblImageWidth.Text = "Width:" + ifile.intWidth.ToString();
-            this.lblImageHeight.Text = "Height:" + ifile.intHeight.ToString();
-
-            // 表示情報
-            //this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[" + this.lblFileName.Text + "]_[" + this.lblImageWidth.Text + "]_[" + this.lblImageHeight.Text + "]";
-            this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[" + this.lblFileName.Text + "]";
-
-            this.lblShowInfo2.Text = "[" + this.lblFileIndex.Text + "/" + this.ImageFilesCount() + "] " + this.RemoveFileCount();
         }
 
         /// <summary>
