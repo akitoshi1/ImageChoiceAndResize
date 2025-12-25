@@ -43,6 +43,13 @@ namespace ImageChoiceAndResize
             this.lblShowInfo2 = new System.Windows.Forms.Label();
             this.btnRelord = new System.Windows.Forms.Button();
             this.pnlResize = new System.Windows.Forms.Panel();
+            this.lblSystemInfo = new System.Windows.Forms.Label();
+            this.chkAutoRelord = new System.Windows.Forms.CheckBox();
+            this.chkRenameFile = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdoWEBP = new System.Windows.Forms.RadioButton();
+            this.rdoPng = new System.Windows.Forms.RadioButton();
+            this.rdoJpg90 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPacageFolderName = new System.Windows.Forms.TextBox();
@@ -73,18 +80,12 @@ namespace ImageChoiceAndResize
             this.txtLandscapeWidth = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnResizePack = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdoJpg90 = new System.Windows.Forms.RadioButton();
-            this.rdoPng = new System.Windows.Forms.RadioButton();
-            this.rdoWEBP = new System.Windows.Forms.RadioButton();
-            this.chkRenameFile = new System.Windows.Forms.CheckBox();
-            this.chkAutoRelord = new System.Windows.Forms.CheckBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.pnlResize.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpSetSize.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -228,6 +229,7 @@ namespace ImageChoiceAndResize
             // pnlResize
             // 
             this.pnlResize.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlResize.Controls.Add(this.lblSystemInfo);
             this.pnlResize.Controls.Add(this.chkAutoRelord);
             this.pnlResize.Controls.Add(this.chkRenameFile);
             this.pnlResize.Controls.Add(this.groupBox2);
@@ -240,6 +242,93 @@ namespace ImageChoiceAndResize
             this.pnlResize.Size = new System.Drawing.Size(674, 531);
             this.pnlResize.TabIndex = 5;
             this.pnlResize.Visible = false;
+            // 
+            // lblSystemInfo
+            // 
+            this.lblSystemInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSystemInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSystemInfo.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblSystemInfo.Location = new System.Drawing.Point(315, 510);
+            this.lblSystemInfo.Name = "lblSystemInfo";
+            this.lblSystemInfo.Size = new System.Drawing.Size(352, 15);
+            this.lblSystemInfo.TabIndex = 33;
+            this.lblSystemInfo.Text = "SystemInfo";
+            this.lblSystemInfo.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // chkAutoRelord
+            // 
+            this.chkAutoRelord.Checked = true;
+            this.chkAutoRelord.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoRelord.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAutoRelord.Location = new System.Drawing.Point(37, 475);
+            this.chkAutoRelord.Name = "chkAutoRelord";
+            this.chkAutoRelord.Size = new System.Drawing.Size(355, 32);
+            this.chkAutoRelord.TabIndex = 3;
+            this.chkAutoRelord.Text = "Auto ReLord Package (After Package Output)";
+            this.chkAutoRelord.UseVisualStyleBackColor = true;
+            // 
+            // chkRenameFile
+            // 
+            this.chkRenameFile.Checked = true;
+            this.chkRenameFile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRenameFile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRenameFile.Location = new System.Drawing.Point(37, 437);
+            this.chkRenameFile.Name = "chkRenameFile";
+            this.chkRenameFile.Size = new System.Drawing.Size(359, 32);
+            this.chkRenameFile.TabIndex = 2;
+            this.chkRenameFile.Text = "ReName File : 000001.jpg";
+            this.chkRenameFile.UseVisualStyleBackColor = true;
+            this.chkRenameFile.CheckedChanged += new System.EventHandler(this.chkRenameFile_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdoWEBP);
+            this.groupBox2.Controls.Add(this.rdoPng);
+            this.groupBox2.Controls.Add(this.rdoJpg90);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.groupBox2.Location = new System.Drawing.Point(15, 320);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(225, 102);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Image Format";
+            // 
+            // rdoWEBP
+            // 
+            this.rdoWEBP.AutoSize = true;
+            this.rdoWEBP.Enabled = false;
+            this.rdoWEBP.Location = new System.Drawing.Point(22, 99);
+            this.rdoWEBP.Name = "rdoWEBP";
+            this.rdoWEBP.Size = new System.Drawing.Size(69, 25);
+            this.rdoWEBP.TabIndex = 2;
+            this.rdoWEBP.Text = "WEBP";
+            this.rdoWEBP.UseVisualStyleBackColor = true;
+            this.rdoWEBP.Visible = false;
+            this.rdoWEBP.CheckedChanged += new System.EventHandler(this.rdoWEBP_CheckedChanged);
+            // 
+            // rdoPng
+            // 
+            this.rdoPng.AutoSize = true;
+            this.rdoPng.Location = new System.Drawing.Point(22, 67);
+            this.rdoPng.Name = "rdoPng";
+            this.rdoPng.Size = new System.Drawing.Size(60, 25);
+            this.rdoPng.TabIndex = 1;
+            this.rdoPng.Text = "PNG";
+            this.rdoPng.UseVisualStyleBackColor = true;
+            this.rdoPng.CheckedChanged += new System.EventHandler(this.rdoPng_CheckedChanged);
+            // 
+            // rdoJpg90
+            // 
+            this.rdoJpg90.AutoSize = true;
+            this.rdoJpg90.Checked = true;
+            this.rdoJpg90.Location = new System.Drawing.Point(22, 35);
+            this.rdoJpg90.Name = "rdoJpg90";
+            this.rdoJpg90.Size = new System.Drawing.Size(148, 25);
+            this.rdoJpg90.TabIndex = 0;
+            this.rdoJpg90.TabStop = true;
+            this.rdoJpg90.Text = "JPEG (Quality 90)";
+            this.rdoJpg90.UseVisualStyleBackColor = true;
+            this.rdoJpg90.CheckedChanged += new System.EventHandler(this.rdoJpg90_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -408,7 +497,7 @@ namespace ImageChoiceAndResize
             this.grpSetSize.Location = new System.Drawing.Point(15, 180);
             this.grpSetSize.Name = "grpSetSize";
             this.grpSetSize.Size = new System.Drawing.Size(639, 134);
-            this.grpSetSize.TabIndex = 1;
+            this.grpSetSize.TabIndex = 0;
             this.grpSetSize.TabStop = false;
             this.grpSetSize.Text = "ReSize and Package";
             // 
@@ -482,7 +571,7 @@ namespace ImageChoiceAndResize
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(324, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 15);
+            this.label1.Size = new System.Drawing.Size(52, 15);
             this.label1.TabIndex = 15;
             this.label1.Text = "width px";
             // 
@@ -574,10 +663,10 @@ namespace ImageChoiceAndResize
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Emoji", 45F);
-            this.btnCancel.Location = new System.Drawing.Point(528, 424);
+            this.btnCancel.Location = new System.Drawing.Point(537, 407);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(130, 100);
-            this.btnCancel.TabIndex = 6;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "❌";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -586,87 +675,13 @@ namespace ImageChoiceAndResize
             // 
             this.btnResizePack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnResizePack.Font = new System.Drawing.Font("Segoe UI Emoji", 45F);
-            this.btnResizePack.Location = new System.Drawing.Point(398, 424);
+            this.btnResizePack.Location = new System.Drawing.Point(407, 407);
             this.btnResizePack.Name = "btnResizePack";
             this.btnResizePack.Size = new System.Drawing.Size(124, 100);
-            this.btnResizePack.TabIndex = 5;
+            this.btnResizePack.TabIndex = 4;
             this.btnResizePack.Text = "📦";
             this.btnResizePack.UseVisualStyleBackColor = true;
             this.btnResizePack.Click += new System.EventHandler(this.btnResizePack_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rdoWEBP);
-            this.groupBox2.Controls.Add(this.rdoPng);
-            this.groupBox2.Controls.Add(this.rdoJpg90);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.groupBox2.Location = new System.Drawing.Point(15, 320);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(225, 134);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Image Format";
-            // 
-            // rdoJpg90
-            // 
-            this.rdoJpg90.AutoSize = true;
-            this.rdoJpg90.Checked = true;
-            this.rdoJpg90.Location = new System.Drawing.Point(22, 35);
-            this.rdoJpg90.Name = "rdoJpg90";
-            this.rdoJpg90.Size = new System.Drawing.Size(148, 25);
-            this.rdoJpg90.TabIndex = 0;
-            this.rdoJpg90.TabStop = true;
-            this.rdoJpg90.Text = "JPEG (Quality 90)";
-            this.rdoJpg90.UseVisualStyleBackColor = true;
-            this.rdoJpg90.CheckedChanged += new System.EventHandler(this.rdoJpg90_CheckedChanged);
-            // 
-            // rdoPng
-            // 
-            this.rdoPng.AutoSize = true;
-            this.rdoPng.Location = new System.Drawing.Point(22, 67);
-            this.rdoPng.Name = "rdoPng";
-            this.rdoPng.Size = new System.Drawing.Size(60, 25);
-            this.rdoPng.TabIndex = 1;
-            this.rdoPng.Text = "PNG";
-            this.rdoPng.UseVisualStyleBackColor = true;
-            this.rdoPng.CheckedChanged += new System.EventHandler(this.rdoPng_CheckedChanged);
-            // 
-            // rdoWEBP
-            // 
-            this.rdoWEBP.AutoSize = true;
-            this.rdoWEBP.Enabled = false;
-            this.rdoWEBP.Location = new System.Drawing.Point(22, 99);
-            this.rdoWEBP.Name = "rdoWEBP";
-            this.rdoWEBP.Size = new System.Drawing.Size(69, 25);
-            this.rdoWEBP.TabIndex = 2;
-            this.rdoWEBP.Text = "WEBP";
-            this.rdoWEBP.UseVisualStyleBackColor = true;
-            this.rdoWEBP.CheckedChanged += new System.EventHandler(this.rdoWEBP_CheckedChanged);
-            // 
-            // chkRenameFile
-            // 
-            this.chkRenameFile.Checked = true;
-            this.chkRenameFile.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRenameFile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRenameFile.Location = new System.Drawing.Point(37, 460);
-            this.chkRenameFile.Name = "chkRenameFile";
-            this.chkRenameFile.Size = new System.Drawing.Size(359, 32);
-            this.chkRenameFile.TabIndex = 3;
-            this.chkRenameFile.Text = "ReName File : 000001.jpg";
-            this.chkRenameFile.UseVisualStyleBackColor = true;
-            this.chkRenameFile.CheckedChanged += new System.EventHandler(this.chkRenameFile_CheckedChanged);
-            // 
-            // chkAutoRelord
-            // 
-            this.chkAutoRelord.Checked = true;
-            this.chkAutoRelord.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAutoRelord.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAutoRelord.Location = new System.Drawing.Point(37, 493);
-            this.chkAutoRelord.Name = "chkAutoRelord";
-            this.chkAutoRelord.Size = new System.Drawing.Size(355, 32);
-            this.chkAutoRelord.TabIndex = 4;
-            this.chkAutoRelord.Text = "Auto ReLord Package (After Package Output)";
-            this.chkAutoRelord.UseVisualStyleBackColor = true;
             // 
             // progressBar
             // 
@@ -706,12 +721,12 @@ namespace ImageChoiceAndResize
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.frmMain_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.pnlResize.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grpSetSize.ResumeLayout(false);
             this.grpSetSize.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,6 +784,7 @@ namespace ImageChoiceAndResize
         private System.Windows.Forms.CheckBox chkRenameFile;
         private System.Windows.Forms.CheckBox chkAutoRelord;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label lblSystemInfo;
     }
 }
 

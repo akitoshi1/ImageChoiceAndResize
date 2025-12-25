@@ -73,6 +73,10 @@ namespace ImageChoiceAndResize
             Square, Portrait, Landscape, Unknown
         }
 
+        /// <summary>
+        /// システム情報
+        /// </summary>
+        public const string SYSTEM_INFO = "V01_[(c)suteakasuteakasuteka@gmail.com]";
 
         /// <summary>
         /// 横幅初期値 縦長
@@ -89,6 +93,8 @@ namespace ImageChoiceAndResize
         /// </summary>
         public const string DEF_WIDTH_SQUARE = "1024";
 
+        
+
         #endregion 列挙・定数
 
         #region 変数
@@ -97,6 +103,8 @@ namespace ImageChoiceAndResize
         /// システム引数
         /// </summary>
         public string[] ARGS;
+
+       
 
         /// <summary>
         /// 表示パス
@@ -209,35 +217,54 @@ namespace ImageChoiceAndResize
         #region イベント
 
         /// <summary>
-        /// 
+        /// コンストラクタ
         /// </summary>
         /// <param name="args"></param>
         public frmMain(string[] args)
         {
-            this.ARGS = args;
-
-            //
-            InitializeComponent();
-
-            // イベント追加
-            this.MouseWheel += frmMain_MouseWheel;
-
-            // 画面表示更新
-            if (!this.ChengeDir(false))
+            try
             {
-                return;
-            }
+                this.ARGS = args;
 
+                //
+                InitializeComponent();
+
+                // イベント追加
+                this.MouseWheel += frmMain_MouseWheel;
+
+                // 画面表示更新
+                if (!this.ChengeDir(false))
+                {
+                    return;
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
-        /// 
+        /// フォームロード
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
+            try
+            {
+                //システム情報の設定
+                this.lblSystemInfo.Text = SYSTEM_INFO;
 
+                //システムテーマの設定
+                SystemTheme st = new SystemTheme();
+                st.SetSystemTheme(this);
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -247,13 +274,20 @@ namespace ImageChoiceAndResize
         /// <param name="e"></param>
         private void frmMain_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            try
             {
-                e.Effect = DragDropEffects.Copy;
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+                else
+                {
+                    e.Effect = DragDropEffects.None;
+                }
             }
-            else
+            catch (Exception err)
             {
-                e.Effect = DragDropEffects.None;
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -405,26 +439,33 @@ namespace ImageChoiceAndResize
         /// </summary>
         public void InitForm()
         {
-            // 画面初期化
-            this.lblShowInfo.Text = string.Empty;
-            this.lblShowInfo2.Text = string.Empty;
-            this.lblFileIndex.Text = string.Empty;
-            this.lblFileName.Text = string.Empty;
-            this.lblImageWidth.Text = string.Empty;
-            this.lblImageHeight.Text = string.Empty;
+            try
+            {
+                // 画面初期化
+                this.lblShowInfo.Text = string.Empty;
+                this.lblShowInfo2.Text = string.Empty;
+                this.lblFileIndex.Text = string.Empty;
+                this.lblFileName.Text = string.Empty;
+                this.lblImageWidth.Text = string.Empty;
+                this.lblImageHeight.Text = string.Empty;
 
-            // ボタンツールチップ
-            ToolTip toolTip = new ToolTip();
-            toolTip.SetToolTip(this.btnResize, "Setting [Resize and Package]");
-            toolTip.SetToolTip(this.btnBack, "Back Image(Wheel Up)");
-            toolTip.SetToolTip(this.btnRemove, "Remove Image(Wheel Click)");
-            toolTip.SetToolTip(this.btnNext, "Next Image(Wheel Down)");
-            toolTip.SetToolTip(this.btnRelord, "Relord");
-            toolTip.SetToolTip(this.btnResizePack, "GO [Resize and Package]");
-            toolTip.SetToolTip(this.btnCancel, "Cancel Back");
+                // ボタンツールチップ
+                ToolTip toolTip = new ToolTip();
+                toolTip.SetToolTip(this.btnResize, "Setting [Resize and Package]");
+                toolTip.SetToolTip(this.btnBack, "Back Image(Wheel Up)");
+                toolTip.SetToolTip(this.btnRemove, "Remove Image(Wheel Click)");
+                toolTip.SetToolTip(this.btnNext, "Next Image(Wheel Down)");
+                toolTip.SetToolTip(this.btnRelord, "Relord");
+                toolTip.SetToolTip(this.btnResizePack, "GO [Resize and Package]");
+                toolTip.SetToolTip(this.btnCancel, "Cancel Back");
 
-            // ボタンの有効化
-            this.SetBtnEnabled(false);
+                // ボタンの有効化
+                this.SetBtnEnabled(false);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -432,13 +473,19 @@ namespace ImageChoiceAndResize
         /// </summary>
         private void SetBtnEnabled(bool enabled)
         {
-            // ボタンの有効化
-            this.btnResize.Enabled = enabled;
-            this.btnBack.Enabled = enabled;
-            this.btnRemove.Enabled = enabled;
-            this.btnNext.Enabled = enabled;
-            this.btnRelord.Enabled = enabled;
-
+            try
+            {
+                // ボタンの有効化
+                this.btnResize.Enabled = enabled;
+                this.btnBack.Enabled = enabled;
+                this.btnRemove.Enabled = enabled;
+                this.btnNext.Enabled = enabled;
+                this.btnRelord.Enabled = enabled;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -468,7 +515,7 @@ namespace ImageChoiceAndResize
                 if (Directory.Exists(this.lordPath))
                 {
                     //ディレクトリが存在するなら
-                    this.Text = "【" + this.ARGS[0] + "】";
+                    this.Text = "[" + this.ARGS[0] + "]";
                 }
                 else
                 {
@@ -614,17 +661,20 @@ namespace ImageChoiceAndResize
                 this.lblImageWidth.Text = "Width:" + ifile.intWidth.ToString();
                 this.lblImageHeight.Text = "Height:" + ifile.intHeight.ToString();
 
+                
+
                 if (isRemove)
                 {
                     // 表示情報
                     this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[🗑️ REMOVED 🗑️]";
-
+                    
                 }
                 else
                 {
                     // 表示情報
                     //this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[" + this.lblFileName.Text + "]_[" + this.lblImageWidth.Text + "]_[" + this.lblImageHeight.Text + "]";
                     this.lblShowInfo.Text = "[" + this.lblFileIndex.Text + "]_[" + this.lblFileName.Text + "]";
+                    
                 }
                 this.lblShowInfo2.Text = "[" + this.lblFileIndex.Text + "/" + this.ImageFilesCount() + "] " + this.RemoveFileCount();
             }
@@ -858,18 +908,25 @@ namespace ImageChoiceAndResize
         /// </summary>
         private void SetResize(int point, CheckBox chkBox, TextBox txtWidth, TextBox txtCount)
         {
-            txtCount.Text = point.ToString();
-            if (point > 0)
+            try
             {
-                chkBox.Enabled = true;
-                chkBox.Checked = true;
-                txtWidth.Enabled = true;
+                txtCount.Text = point.ToString();
+                if (point > 0)
+                {
+                    chkBox.Enabled = true;
+                    chkBox.Checked = true;
+                    txtWidth.Enabled = true;
+                }
+                else
+                {
+                    chkBox.Enabled = false;
+                    chkBox.Checked = false;
+                    txtWidth.Enabled = false;
+                }
             }
-            else
+            catch (Exception err)
             {
-                chkBox.Enabled = false;
-                chkBox.Checked = false;
-                txtWidth.Enabled = false;
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -879,14 +936,21 @@ namespace ImageChoiceAndResize
         /// </summary>
         public void CloseResizePanel()
         {
-            this.pnlResize.Visible = false;
-            this.pictureBox.Visible = true;
+            try
+            {
+                this.pnlResize.Visible = false;
+                this.pictureBox.Visible = true;
 
-            this.btnResize.Enabled = true;
-            this.btnBack.Enabled = true;
-            this.btnRemove.Enabled = true;
-            this.btnNext.Enabled = true;
-            this.btnRelord.Enabled = true;
+                this.btnResize.Enabled = true;
+                this.btnBack.Enabled = true;
+                this.btnRemove.Enabled = true;
+                this.btnNext.Enabled = true;
+                this.btnRelord.Enabled = true;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -974,52 +1038,60 @@ namespace ImageChoiceAndResize
         /// <returns></returns>
         private bool isResize(ImageFile ifile)
         {
-            // 不明
-            if (ifile.imageType == ImageType.Unknown)
+            try
             {
-                return false;
-            }
 
-            // 正方形
-            if (ifile.imageType == ImageType.Square )
-            {
-                if(this.chkSquare.Checked )
-                {
-                    return true;
-                }
-                else
+
+                // 不明
+                if (ifile.imageType == ImageType.Unknown)
                 {
                     return false;
                 }
-            }
 
-            // 縦長
-            if (ifile.imageType == ImageType.Portrait)
+                // 正方形
+                if (ifile.imageType == ImageType.Square)
+                {
+                    if (this.chkSquare.Checked)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                // 縦長
+                if (ifile.imageType == ImageType.Portrait)
+                {
+                    if (this.chkPortrait.Checked)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                // 横長
+                if (ifile.imageType == ImageType.Landscape)
+                {
+                    if (this.chkLandscape.Checked)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            catch (Exception err)
             {
-                if (this.chkPortrait.Checked)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // 横長
-            if (ifile.imageType == ImageType.Landscape)
-            {
-                if (this.chkLandscape.Checked)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-
 
             return false ;
         }
@@ -1211,41 +1283,49 @@ namespace ImageChoiceAndResize
         {
             string packageName = string.Empty;
 
-            if (this.txtPackageName_Head.Text != string.Empty)
+            try
             {
-                packageName += txtPackageName_Head.Text.Trim();
-            }
 
-            if (this.txtPackageName_Name.Text != string.Empty)
-            {
-                packageName += "_" + txtPackageName_Name.Text.Trim();
-            }
+                if (this.txtPackageName_Head.Text != string.Empty)
+                {
+                    packageName += txtPackageName_Head.Text.Trim();
+                }
 
-            if (this.txtPackageName_type.Text != string.Empty)
-            {
-                packageName += "_" + txtPackageName_type.Text.Trim();
-            }
+                if (this.txtPackageName_Name.Text != string.Empty)
+                {
+                    packageName += "_" + txtPackageName_Name.Text.Trim();
+                }
 
-            if (this.txtPackageName_model.Text != string.Empty)
-            {
-                packageName += "_" + txtPackageName_model.Text.Trim();
-            }
+                if (this.txtPackageName_type.Text != string.Empty)
+                {
+                    packageName += "_" + txtPackageName_type.Text.Trim();
+                }
 
-            if (this.txtPackageName_Version.Text != string.Empty)
-            {
-                packageName += "_" + txtPackageName_Version.Text.Trim();
-            }
+                if (this.txtPackageName_model.Text != string.Empty)
+                {
+                    packageName += "_" + txtPackageName_model.Text.Trim();
+                }
 
-            packageName = packageName.Trim();
-            this.txtPacageFolderName.Text = packageName;
+                if (this.txtPackageName_Version.Text != string.Empty)
+                {
+                    packageName += "_" + txtPackageName_Version.Text.Trim();
+                }
 
-            if (packageName == string.Empty)
-            {
-                this.btnResizePack.Enabled = false;
+                packageName = packageName.Trim();
+                this.txtPacageFolderName.Text = packageName;
+
+                if (packageName == string.Empty)
+                {
+                    this.btnResizePack.Enabled = false;
+                }
+                else
+                {
+                    this.btnResizePack.Enabled = true;
+                }
             }
-            else
+            catch (Exception err)
             {
-                this.btnResizePack.Enabled = true;
+                MessageBox.Show(err.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
