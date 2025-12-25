@@ -368,6 +368,7 @@ namespace ImageChoiceAndResize
             this.txtPacageFolderName.Location = new System.Drawing.Point(9, 118);
             this.txtPacageFolderName.MaxLength = 10;
             this.txtPacageFolderName.Name = "txtPacageFolderName";
+            this.txtPacageFolderName.ReadOnly = true;
             this.txtPacageFolderName.Size = new System.Drawing.Size(622, 29);
             this.txtPacageFolderName.TabIndex = 5;
             this.txtPacageFolderName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
