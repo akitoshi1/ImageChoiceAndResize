@@ -76,7 +76,7 @@ namespace ImageChoiceAndResize
         /// <summary>
         /// システム情報
         /// </summary>
-        public const string SYSTEM_INFO = "V01_[(c)suteakasuteakasuteka@gmail.com]";
+        public const string SYSTEM_INFO = "V02_[https://civitai.com/user/suteakasuteakasuteka434]";
 
         /// <summary>
         /// 横幅初期値 縦長
@@ -516,12 +516,22 @@ namespace ImageChoiceAndResize
                 {
                     //ディレクトリが存在するなら
                     this.Text = "[" + this.ARGS[0] + "]";
+
+                    //ドロップダウン誘導ラベルを非表示
+                    this.lblFolder.Visible = false;
+                    this.lblpleaseDorpDown.Visible = false;
+                    this.pnlLogo.Visible = false;
                 }
                 else
                 {
                     this.Text = "Please drop the image Folder.";
                     MessageBox.Show("Please drop the image Folder.");
                     this.lordPath = string.Empty;
+
+                    //ドロップダウン誘導ラベルを表示
+                    this.lblFolder.Visible = true;
+                    this.lblpleaseDorpDown.Visible = true;
+                    this.pnlLogo.Visible = true;
                     return false;
                 }
 
@@ -1599,5 +1609,9 @@ namespace ImageChoiceAndResize
 
         #endregion プログレスバー
 
+        private void lblFolder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

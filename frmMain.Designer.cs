@@ -81,6 +81,9 @@ namespace ImageChoiceAndResize
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnResizePack = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.lblFolder = new System.Windows.Forms.Label();
+            this.lblpleaseDorpDown = new System.Windows.Forms.Label();
+            this.pnlLogo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.pnlResize.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,9 +96,10 @@ namespace ImageChoiceAndResize
             this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Location = new System.Drawing.Point(12, 83);
+            this.pictureBox.ErrorImage = null;
+            this.pictureBox.Location = new System.Drawing.Point(11, 83);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(675, 553);
+            this.pictureBox.Size = new System.Drawing.Size(675, 569);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
@@ -148,7 +152,7 @@ namespace ImageChoiceAndResize
             this.btnBack.Location = new System.Drawing.Point(82, 21);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(64, 56);
-            this.btnBack.TabIndex = 1;
+            this.btnBack.TabIndex = 2;
             this.btnBack.Text = "⬅️";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -158,10 +162,10 @@ namespace ImageChoiceAndResize
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Enabled = false;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI Emoji", 27.75F);
-            this.btnNext.Location = new System.Drawing.Point(554, 21);
+            this.btnNext.Location = new System.Drawing.Point(553, 21);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(64, 56);
-            this.btnNext.TabIndex = 3;
+            this.btnNext.TabIndex = 4;
             this.btnNext.Text = "➡️";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
@@ -174,8 +178,8 @@ namespace ImageChoiceAndResize
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI Emoji", 27.75F);
             this.btnRemove.Location = new System.Drawing.Point(152, 21);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(396, 56);
-            this.btnRemove.TabIndex = 2;
+            this.btnRemove.Size = new System.Drawing.Size(395, 56);
+            this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "🗑️";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -192,12 +196,13 @@ namespace ImageChoiceAndResize
             // 
             // btnResize
             // 
+            this.btnResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnResize.Enabled = false;
             this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResize.Location = new System.Drawing.Point(12, 21);
+            this.btnResize.Location = new System.Drawing.Point(622, 21);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(64, 56);
-            this.btnResize.TabIndex = 0;
+            this.btnResize.TabIndex = 5;
             this.btnResize.Text = "📦";
             this.btnResize.UseVisualStyleBackColor = true;
             this.btnResize.Click += new System.EventHandler(this.btnResize_Click);
@@ -206,7 +211,7 @@ namespace ImageChoiceAndResize
             // 
             this.lblShowInfo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblShowInfo2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowInfo2.Location = new System.Drawing.Point(554, 6);
+            this.lblShowInfo2.Location = new System.Drawing.Point(553, 6);
             this.lblShowInfo2.Name = "lblShowInfo2";
             this.lblShowInfo2.Size = new System.Drawing.Size(133, 12);
             this.lblShowInfo2.TabIndex = 10;
@@ -215,13 +220,12 @@ namespace ImageChoiceAndResize
             // 
             // btnRelord
             // 
-            this.btnRelord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRelord.Enabled = false;
             this.btnRelord.Font = new System.Drawing.Font("Segoe UI Emoji", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelord.Location = new System.Drawing.Point(624, 21);
+            this.btnRelord.Location = new System.Drawing.Point(12, 21);
             this.btnRelord.Name = "btnRelord";
             this.btnRelord.Size = new System.Drawing.Size(64, 56);
-            this.btnRelord.TabIndex = 4;
+            this.btnRelord.TabIndex = 1;
             this.btnRelord.Text = "🔃";
             this.btnRelord.UseVisualStyleBackColor = true;
             this.btnRelord.Click += new System.EventHandler(this.btnRelord_Click);
@@ -237,7 +241,7 @@ namespace ImageChoiceAndResize
             this.pnlResize.Controls.Add(this.grpSetSize);
             this.pnlResize.Controls.Add(this.btnCancel);
             this.pnlResize.Controls.Add(this.btnResizePack);
-            this.pnlResize.Location = new System.Drawing.Point(12, 83);
+            this.pnlResize.Location = new System.Drawing.Point(11, 83);
             this.pnlResize.Name = "pnlResize";
             this.pnlResize.Size = new System.Drawing.Size(674, 531);
             this.pnlResize.TabIndex = 5;
@@ -263,7 +267,7 @@ namespace ImageChoiceAndResize
             this.chkAutoRelord.Location = new System.Drawing.Point(37, 475);
             this.chkAutoRelord.Name = "chkAutoRelord";
             this.chkAutoRelord.Size = new System.Drawing.Size(355, 32);
-            this.chkAutoRelord.TabIndex = 3;
+            this.chkAutoRelord.TabIndex = 4;
             this.chkAutoRelord.Text = "Auto ReLord Package (After Package Output)";
             this.chkAutoRelord.UseVisualStyleBackColor = true;
             // 
@@ -275,7 +279,7 @@ namespace ImageChoiceAndResize
             this.chkRenameFile.Location = new System.Drawing.Point(37, 437);
             this.chkRenameFile.Name = "chkRenameFile";
             this.chkRenameFile.Size = new System.Drawing.Size(359, 32);
-            this.chkRenameFile.TabIndex = 2;
+            this.chkRenameFile.TabIndex = 3;
             this.chkRenameFile.Text = "ReName File : 000001.jpg";
             this.chkRenameFile.UseVisualStyleBackColor = true;
             this.chkRenameFile.CheckedChanged += new System.EventHandler(this.chkRenameFile_CheckedChanged);
@@ -289,7 +293,7 @@ namespace ImageChoiceAndResize
             this.groupBox2.Location = new System.Drawing.Point(15, 320);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(225, 102);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Image Format";
             // 
@@ -498,7 +502,7 @@ namespace ImageChoiceAndResize
             this.grpSetSize.Location = new System.Drawing.Point(15, 180);
             this.grpSetSize.Name = "grpSetSize";
             this.grpSetSize.Size = new System.Drawing.Size(639, 134);
-            this.grpSetSize.TabIndex = 0;
+            this.grpSetSize.TabIndex = 1;
             this.grpSetSize.TabStop = false;
             this.grpSetSize.Text = "ReSize and Package";
             // 
@@ -667,7 +671,7 @@ namespace ImageChoiceAndResize
             this.btnCancel.Location = new System.Drawing.Point(537, 407);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(130, 100);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "❌";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -679,7 +683,7 @@ namespace ImageChoiceAndResize
             this.btnResizePack.Location = new System.Drawing.Point(407, 407);
             this.btnResizePack.Name = "btnResizePack";
             this.btnResizePack.Size = new System.Drawing.Size(124, 100);
-            this.btnResizePack.TabIndex = 4;
+            this.btnResizePack.TabIndex = 5;
             this.btnResizePack.Text = "📦";
             this.btnResizePack.UseVisualStyleBackColor = true;
             this.btnResizePack.Click += new System.EventHandler(this.btnResizePack_Click);
@@ -690,16 +694,56 @@ namespace ImageChoiceAndResize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(11, 22);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(675, 23);
+            this.progressBar.Size = new System.Drawing.Size(674, 23);
             this.progressBar.TabIndex = 11;
             this.progressBar.Visible = false;
+            // 
+            // lblFolder
+            // 
+            this.lblFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFolder.Font = new System.Drawing.Font("Segoe UI Emoji", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFolder.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblFolder.Location = new System.Drawing.Point(12, 216);
+            this.lblFolder.Name = "lblFolder";
+            this.lblFolder.Size = new System.Drawing.Size(673, 99);
+            this.lblFolder.TabIndex = 12;
+            this.lblFolder.Text = "📁";
+            this.lblFolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFolder.Click += new System.EventHandler(this.lblFolder_Click);
+            // 
+            // lblpleaseDorpDown
+            // 
+            this.lblpleaseDorpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblpleaseDorpDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpleaseDorpDown.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblpleaseDorpDown.Location = new System.Drawing.Point(12, 216);
+            this.lblpleaseDorpDown.Name = "lblpleaseDorpDown";
+            this.lblpleaseDorpDown.Size = new System.Drawing.Size(673, 21);
+            this.lblpleaseDorpDown.TabIndex = 13;
+            this.lblpleaseDorpDown.Text = "Please Drop The Image Folder.";
+            this.lblpleaseDorpDown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
+            this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlLogo.Location = new System.Drawing.Point(12, 368);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(674, 126);
+            this.pnlLogo.TabIndex = 14;
             // 
             // frmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 648);
+            this.ClientSize = new System.Drawing.Size(702, 664);
+            this.Controls.Add(this.lblpleaseDorpDown);
+            this.Controls.Add(this.lblFolder);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.pnlResize);
             this.Controls.Add(this.btnRelord);
@@ -713,6 +757,7 @@ namespace ImageChoiceAndResize
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.lblImageWidth);
             this.Controls.Add(this.lblImageHeight);
+            this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.pictureBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
@@ -786,6 +831,9 @@ namespace ImageChoiceAndResize
         private System.Windows.Forms.CheckBox chkAutoRelord;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label lblSystemInfo;
+        private System.Windows.Forms.Label lblFolder;
+        private System.Windows.Forms.Label lblpleaseDorpDown;
+        private System.Windows.Forms.Panel pnlLogo;
     }
 }
 
